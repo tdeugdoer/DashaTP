@@ -1,3 +1,5 @@
+package client;
+
 import javax.swing.plaf.IconUIResource;
 import java.io.*;
 import java.net.InetAddress;

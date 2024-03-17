@@ -3,6 +3,7 @@ package server;
 import java.io.*;
 import java.net.*;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Server {
     public static void main(String[] args) {
@@ -11,13 +12,23 @@ public class Server {
             System.err.println("Сервер стартовал");
             byte[] buf = new byte[1024];; // буфер для хранения данных
 
+            int countReceivedMessages = 0;
             while (true) {
                 DatagramPacket clientPacket = new DatagramPacket(buf, buf.length); // UDP-пакет, хранящий сообщение
                 serverSocket.receive(clientPacket); // сервер получает сообщение и сохраняет его в clientPacket
                 String clientMessage = new String(clientPacket.getData(), 0, clientPacket.getLength()); // создаём строку, которая содержит текст из полученного сообщения. В конструкторе из clientPacket получаем данные, начиная с 0 символа до "последнего" (индекс последнего является значение length, которое храниться в clientPacket)
                 System.out.println("Сообщение от клиента (" + clientPacket.getAddress().toString() + "): " + clientMessage); // выводим сообщение от клиента
 
-                String serverMessage = new StringBuilder(clientMessage).reverse() + "; " + clientMessage.toUpperCase() + "; " + encrypt(clientMessage) + "; " + "\n"; // формируем сообщение от сервера
+                String[] arr = clientMessage.split(";");
+                if (arr[0].equals("1")) {
+                    printInfo(countReceivedMessages, arr[1], arr[2]);
+                }
+                countReceivedMessages++;
+                if(Objects.equals(arr[1], arr[2]) ) {
+                   printInfo(countReceivedMessages, arr[1], arr[2]);
+                }
+
+                String serverMessage = new StringBuilder(arr[0]).reverse() + "; " + arr[0].toUpperCase() + "; " + encrypt(arr[0]) + "; " + "\n"; // формируем сообщение от сервера
                 buf = serverMessage.getBytes(); // записываем в буфер сообщение сервера в виде массива байт
                 DatagramPacket serverPacket = new DatagramPacket(buf, buf.length, clientPacket.getAddress(), clientPacket.getPort()); // создаём UDP-пакет для отправки (передаём 1 - буфер, 2 - длину буфера, 3 - адрес клиента, берём из отправленного им пакета, 4 - порт клиента, также из отправленного им пакета)
                 serverSocket.send(serverPacket); // отправляем данные клиенту, передав в сокет наше сообщение
@@ -51,5 +62,11 @@ public class Server {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private static void printInfo(int countReceivedMessages, String countSend, String countScheduledMessages) {
+        System.out.println("Было получено: " + countReceivedMessages);
+        System.out.println("Было отправлено: " + countSend);
+        System.out.println("Было запланировано быть отправленным: " + countScheduledMessages);
     }
 }

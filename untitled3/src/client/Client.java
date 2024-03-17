@@ -8,22 +8,39 @@ import java.util.Scanner;
 public class Client {
     public static void main(String[] args) {
         try (DatagramSocket clientSocket = new DatagramSocket()) { // создаём сокет
-
             Scanner sc = new Scanner(System.in); // объект для считывания консоли
-            byte[] buf; // буфер для хранения данных
 
+            int totalCount, countSendMessage = 1;
             while (true) {
+                System.out.println("Введите общее количество сообщений");
+                String input = sc.nextLine();
+                try {
+                    totalCount = Integer.parseInt(input);
+                    if (totalCount < 1) {
+                        System.out.println("Количество сообщений должно быть больше 0. Повторите попытку");
+                    } else break;
+                } catch (NumberFormatException e) {
+                    System.out.println("Вы ввели не число, повторите попытку");
+                }
+            }
+
+            byte[] buf; // буфер для хранения данных
+            for (; countSendMessage < totalCount + 1; countSendMessage++) {
                 System.out.println("Введите строку (только латинские буквы) или 'break' для выхода: ");
                 String clientMessage = sc.nextLine(); // считываем консоль
                 if (clientMessage.equalsIgnoreCase("break")) { // проверяем, хочет ли пользователь закончить работу
+                    buf = ("1;" + (countSendMessage - 1) + ";" + totalCount).getBytes();
+                    DatagramPacket datagramPacket = new DatagramPacket(buf, buf.length, InetAddress.getLocalHost(), 7070); // создаём UDP-пакет для отправки (передаём 1 - буфер, 2 - длину буфера, 3 - адрес сервера (у нас localhost), порт сервера)
+                    clientSocket.send(datagramPacket); // отправляем данные на сервер, передав в сокет наше сообщение
                     break;
                 }
                 if (!isLatinAlphabet(clientMessage)) { // проверяем, содержит ли введённая строка только латинские буквы
                     System.out.println("Введённая строка содержит не только латинские буквы. Повторите попытку");
+                    countSendMessage--;
                     continue;
                 }
 
-                buf = clientMessage.getBytes(); // записываем в буфер строку пользователя, переведённую в массив байт
+                buf = (clientMessage+ ";" + countSendMessage + ";" + totalCount).getBytes(); // записываем в буфер строку пользователя, переведённую в массив байт
                 DatagramPacket datagramPacket = new DatagramPacket(buf, buf.length, InetAddress.getLocalHost(), 7070); // создаём UDP-пакет для отправки (передаём 1 - буфер, 2 - длину буфера, 3 - адрес сервера (у нас localhost), порт сервера)
                 clientSocket.send(datagramPacket); // отправляем данные на сервер, передав в сокет наше сообщение
 

@@ -1,0 +1,105 @@
+Клиент: /192.168.0.113
+Получено: fdsfsd;1;3
+Отправлено: dsfsdf; FDSFSD; igvivg; 
+
+
+Клиент: /192.168.0.113
+Получено: aaaaaaaaaaaa;3;3
+Отправлено: aaaaaaaaaaaa; AAAAAAAAAAAA; dddddddddddd; 
+
+
+Клиент: /192.168.0.113
+Получено: dfsdsfds;0;4
+Отправлено: sdfsdsfd; DFSDSFDS; givgvigv; 
+
+
+Клиент: /192.168.0.113
+Получено: cvzvxzcvz;1;4
+Отправлено: zvczxvzvc; CVZVXZCVZ; fy}y{}fy}; 
+
+
+Клиент: /192.168.0.113
+Получено: yttrhyyy;2;4
+Отправлено: yyyhrtty; YTTRHYYY; |wwuk|||; 
+
+
+Клиент: /192.168.0.113
+Получено: hhhhh;3;4
+Отправлено: hhhhh; HHHHH; kkkkk; 
+
+
+Клиент: /192.168.0.113
+Получено: adfasdfas;1;4
+Отправлено: safdsafda; ADFASDFAS; dgidvgidv; 
+
+
+Клиент: /192.168.0.113
+Получено: zvxzxvzc;2;4
+Отправлено: czvxzxvz; ZVXZXVZC; }y{}{y}f; 
+
+
+Клиент: /192.168.0.113
+Получено: jjjj;3;4
+Отправлено: jjjj; JJJJ; mmmm; 
+
+
+Клиент: /192.168.0.113
+Получено: dfsdfsd;1;4
+Отправлено: dsfdsfd; DFSDFSD; givgivg; 
+
+
+Клиент: /192.168.0.113
+Получено: xcvxcv;2;4
+Отправлено: vcxvcx; XCVXCV; {fy{fy; 
+
+
+Клиент: /192.168.0.113
+Получено: ggggg;3;4
+Отправлено: ggggg; GGGGG; jjjjj; 
+
+
+Клиент: /192.168.0.113
+Получено: eeeee;4;4
+Отправлено: eeeee; EEEEE; hhhhh; 
+
+
+Клиент: /192.168.0.113
+Получено: fdsfsdf;1;5
+Отправлено: fdsfsdf; FDSFSDF; igvivgi; 
+
+
+Клиент: /192.168.0.113
+Получено: bcvbcvb;2;5
+Отправлено: bvcbvcb; BCVBCVB; efyefye; 
+
+
+Клиент: /192.168.0.113
+Получено: rwerw;1;5
+Отправлено: wrewr; RWERW; uzhuz; 
+
+
+Клиент: /192.168.0.113
+Получено: bbbbbbb;2;5
+Отправлено: bbbbbbb; BBBBBBB; eeeeeee; 
+
+
+Клиент: /192.168.0.113
+Получено: 1;3;5
+Отправлено: 1; 1; 1; 
+
+
+Клиент: /192.168.0.113
+Получено: dsfsd;1;5
+Отправлено: dsfsd; DSFSD; gvivg; 
+
+
+Клиент: /192.168.0.113
+Получено: nnnnnn;2;5
+Отправлено: nnnnnn; NNNNNN; qqqqqq; 
+
+
+Клиент: /192.168.0.113
+Получено: 1;2;5
+Отправлено: 1; 1; 1; 
+
+

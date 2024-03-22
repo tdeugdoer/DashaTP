@@ -1,0 +1,1 @@
+BankEmployee{id=4, name='Елизавета', salary=9999.0}

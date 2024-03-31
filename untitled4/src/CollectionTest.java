@@ -7,7 +7,7 @@ import java.util.*;
 
 public class CollectionTest {
 
-    static class SalaryComparator implements Comparator<BankEmployee> {
+    static class SalaryComparator implements Comparator<BankEmployee> { // класс, который передаётся в коллекции для определения сортировки
         @Override
         public int compare(BankEmployee employee1, BankEmployee employee2) {
             return Double.compare(employee1.getSalary(), employee2.getSalary());
@@ -60,9 +60,15 @@ public class CollectionTest {
                 case "3":
                     // Редактирование сотрудника
                     int editId = Input.inputInt(scanner,"Введите ID сотрудника для редактирования");
-                    editEmployeeById(linkedList, editId, scanner);
-                    editEmployeeById(treeSet, editId, scanner);
-                    editEmployeeById(priorityQueue, editId, scanner);
+
+                    System.out.print("Введите новое имя сотрудника: ");
+                    String name = scanner.nextLine();
+                    double salary = Input.inputDouble(scanner, "Введите новую зарплату сотрудника: ");
+                    BankEmployee editedEmployee = new BankEmployee(name, salary);
+
+                    editEmployeeById(linkedList, editId, editedEmployee);
+                    editEmployeeById(treeSet, editId, editedEmployee);
+                    editEmployeeById(priorityQueue, editId, editedEmployee);
                     break;
                 case "4":
                     // Вывод списка сотрудников
@@ -75,7 +81,7 @@ public class CollectionTest {
                     break;
                 case "5":
                     // Вывод списка сотрудников в файл
-                    saveEmployeesToFile(linkedList);
+                    saveEmployeesToFile(linkedList, treeSet, priorityQueue);
                     System.out.println("Данные сохранены в файл");
                     break;
                 case "6":
@@ -123,7 +129,7 @@ public class CollectionTest {
 
     private static BankEmployee createEmployee(Scanner scanner) {
         System.out.print("Введите имя сотрудника: ");
-        String name = scanner.next();
+        String name = scanner.nextLine();
         double salary = Input.inputDouble(scanner, "Введите зарплату сотрудника: ");
         return new BankEmployee(name, salary);
     }
@@ -139,12 +145,11 @@ public class CollectionTest {
         System.out.println("Объект с таким id не найден");
     }
 
-    private static <T extends Collection<BankEmployee>> void editEmployeeById(T collection, int id, Scanner scanner) {
+    private static <T extends Collection<BankEmployee>> void editEmployeeById(T collection, int id, BankEmployee editedEmployee) {
         for (BankEmployee employee : collection) {
             if (employee.getId() == id) {
-                System.out.print("Введите новое имя сотрудника: ");
-                employee.setName(scanner.next());
-                employee.setSalary(Input.inputDouble(scanner, "Введите новую зарплату сотрудника: "));
+                employee.setName(editedEmployee.getName());
+                employee.setSalary(editedEmployee.getSalary());
                 return;
             }
         }

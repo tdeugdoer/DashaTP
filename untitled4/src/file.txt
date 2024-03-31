@@ -1,1 +1,24 @@
+LinkedList
+BankEmployee{id=1, name='Арсений', salary=423.3}
+BankEmployee{id=2, name='Катя', salary=342.0}
+BankEmployee{id=3, name='Лёша', salary=1000.0}
 BankEmployee{id=4, name='Елизавета', salary=9999.0}
+BankEmployee{id=5, name='Ульяна', salary=854.75}
+BankEmployee{id=6, name='дашка', salary=300.0}
+BankEmployee{id=7, name='аывафы', salary=423423.0}
+TreeSet
+BankEmployee{id=6, name='дашка', salary=300.0}
+BankEmployee{id=2, name='Катя', salary=342.0}
+BankEmployee{id=1, name='Арсений', salary=423.3}
+BankEmployee{id=5, name='Ульяна', salary=854.75}
+BankEmployee{id=3, name='Лёша', salary=1000.0}
+BankEmployee{id=4, name='Елизавета', salary=9999.0}
+BankEmployee{id=7, name='аывафы', salary=423423.0}
+PriorityQueue
+BankEmployee{id=6, name='дашка', salary=300.0}
+BankEmployee{id=1, name='Арсений', salary=423.3}
+BankEmployee{id=2, name='Катя', salary=342.0}
+BankEmployee{id=4, name='Елизавета', salary=9999.0}
+BankEmployee{id=5, name='Ульяна', salary=854.75}
+BankEmployee{id=3, name='Лёша', salary=1000.0}
+BankEmployee{id=7, name='аывафы', salary=423423.0}

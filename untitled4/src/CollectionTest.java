@@ -109,8 +109,11 @@ public class CollectionTest {
                     // Выборка сотрудников
                     double minSalary = Input.inputDouble(scanner, "Введите минимальную зарплату");
                     double maxSalary = Input.inputDouble(scanner, "Введите максимальную зарплату");
+                    System.out.println("Отфильтрованные сотрудники (LinkedList):");
                     filterEmployeesBySalary(linkedList, minSalary, maxSalary);
+                    System.out.println("Отфильтрованные сотрудники (TreeSet):");
                     filterEmployeesBySalary(treeSet, minSalary, maxSalary);
+                    System.out.println("Отфильтрованные сотрудники (PriorityQueue):");
                     filterEmployeesBySalary(priorityQueue, minSalary, maxSalary);
                     System.out.println("Сотрудники успешно отфильтрованы по зарплате.");
                     break;
@@ -238,11 +241,10 @@ public class CollectionTest {
     private static <T extends Collection<BankEmployee>> void filterEmployeesBySalary(T collection, double minSalary, double maxSalary) {
         List<BankEmployee> newCollection = new LinkedList<>();
         for (BankEmployee employee : collection) {
-            if (employee.getSalary() > minSalary & employee.getSalary() < maxSalary) {
+            if (employee.getSalary() >= minSalary && employee.getSalary() <= maxSalary) {
                 newCollection.add(employee);
             }
         }
-        collection.clear();
-        collection.addAll(newCollection);
+        System.out.println(newCollection);
     }
 }

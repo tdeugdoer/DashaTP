@@ -1,0 +1,15 @@
+BankEmployee{id=1, name='Арсений', salary=423, gender='Мужской'}
+BankEmployee{id=2, name='Катя', salary=342, gender='Женский'}
+BankEmployee{id=3, name='Лёша', salary=1000, gender='Мужской'}
+BankEmployee{id=4, name='Елизавета', salary=9999, gender='Женский'}
+BankEmployee{id=5, name='Ульяна', salary=854, gender='Женский'}
+
+---------------------------------------------------------------
+BankEmployee{id=1, name='Арсений', salary=423, gender='Мужской'}
+BankEmployee{id=2, name='v', salary=234, gender='Мужской'}
+BankEmployee{id=3, name='Лёша', salary=1000, gender='Мужской'}
+BankEmployee{id=5, name='Ульяна', salary=854, gender='Женский'}
+BankEmployee{id=6, name='sdfds', salary=423, gender='Мужской'}
+BankEmployee{id=7, name='mm', salary=11111, gender='Мужской'}
+
+---------------------------------------------------------------

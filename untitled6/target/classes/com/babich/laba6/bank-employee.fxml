@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.Group?>
+<VBox alignment="TOP_CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea"
+      fx:controller="com.babich.laba6.controller.BankEmployeeController">
+    <GridPane>
+        <padding>
+            <Insets bottom="10" left="10" right="10" top="10"/>
+        </padding>
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints vgrow="ALWAYS"/>
+            <RowConstraints vgrow="ALWAYS"/>
+            <RowConstraints vgrow="ALWAYS"/>
+            <RowConstraints vgrow="ALWAYS"/>
+            <RowConstraints vgrow="ALWAYS"/>
+        </rowConstraints>
+        <Label text="Id:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <Label text="Имя:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <Label text="Зарплата:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <Label text="Пол:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <Label fx:id="idValue" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <TextField fx:id="nameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <TextField fx:id="salaryTextField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <RadioButton fx:id="maleRadioButton" selected="true" text="Мужской" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        <RadioButton fx:id="femaleRadioButton" text="Женский" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+    </GridPane>
+    <TableView fx:id="tableView">
+        <columns>
+            <TableColumn minWidth="50" text="Id"/>
+            <TableColumn minWidth="170" text="Имя"/>
+            <TableColumn minWidth="160" text="Зарплата"/>
+            <TableColumn minWidth="100" text="Пол"/>
+        </columns>
+    </TableView>
+    <HBox alignment="TOP_CENTER" spacing="10">
+        <Button onAction="#saveButtonAction" text="Сохранить"/>
+        <Button onAction="#updateButtonAction" text="Редактировать"/>
+        <Button onAction="#deleteButtonAction" text="Удалить"/>
+        <Button onAction="#clearButtonAction" text="Очистить"/>
+        <Button onAction="#saveToFileButtonAction" text="Сохранить в файл"/>
+    </HBox>
+</VBox>

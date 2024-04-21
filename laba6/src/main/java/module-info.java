@@ -1,6 +1,7 @@
 module com.babich.laba6 {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens com.babich.laba6 to javafx.fxml;

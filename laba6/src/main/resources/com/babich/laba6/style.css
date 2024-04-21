@@ -1,0 +1,61 @@
+/* styles.css */
+.vbox {
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
+
+.grid-pane {
+    -fx-padding: 10;
+}
+
+.column-constraints {
+    -fx-hgrow: always;
+}
+
+.row-constraints {
+    -fx-vgrow: always;
+}
+
+.label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #333333; /* Темно-серый цвет текста */
+}
+
+.text-field {
+    -fx-pref-width: 200px;
+    -fx-background-color: #FFFFFF; /* Белый фон текстовых полей */
+    -fx-text-fill: #333333; /* Темно-серый цвет текста */
+    -fx-border-width: 1px; /* Толщина границы текстового поля */
+    -fx-border-color: #CCCCCC; /* Светло-серый цвет границы текстового поля */
+}
+
+.radio-button {
+    -fx-padding: 5;
+    -fx-text-fill: #333333; /* Темно-серый цвет текста */
+}
+
+.table-view {
+    -fx-pref-height: 200px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #CCCCCC; /* Светло-серый цвет фона заголовков столбцов */
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #333333; /* Темно-серый цвет текста заголовков столбцов */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #C8E6C9; /* Зеленый цвет фона выбранной строки таблицы */
+}
+
+.hbox {
+    -fx-alignment: center;
+    -fx-spacing: 10;
+}
+
+.button {
+    -fx-background-color: #333333; /* Темно-серый цвет фона кнопок */
+    -fx-text-fill: #FFFFFF; /* Белый цвет текста на кнопках */
+}

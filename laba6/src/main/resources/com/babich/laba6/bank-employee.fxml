@@ -25,12 +25,16 @@
         <Label text="Id:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
         <Label text="Имя:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
         <Label text="Зарплата:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-        <Label text="Пол:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <Label text="Опыт:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+        <Label text="Отдел:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+        <Label text="Пол:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
         <Label fx:id="idValue" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
         <TextField fx:id="nameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
         <TextField fx:id="salaryTextField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-        <RadioButton fx:id="maleRadioButton" selected="true" text="Мужской" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
-        <RadioButton fx:id="femaleRadioButton" text="Женский" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        <TextField fx:id="experienceTextField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+        <TextField fx:id="departmentTextField" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+        <RadioButton fx:id="maleRadioButton" selected="true" text="Мужской" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+        <RadioButton fx:id="femaleRadioButton" text="Женский" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
     </GridPane>
     <TableView fx:id="tableView">
         <columns>
@@ -38,6 +42,8 @@
             <TableColumn minWidth="170" text="Имя"/>
             <TableColumn minWidth="160" text="Зарплата"/>
             <TableColumn minWidth="100" text="Пол"/>
+            <TableColumn minWidth="50" text="Опыт"/>
+            <TableColumn minWidth="150" text="Отдел"/>
         </columns>
     </TableView>
     <HBox alignment="TOP_CENTER" spacing="10">

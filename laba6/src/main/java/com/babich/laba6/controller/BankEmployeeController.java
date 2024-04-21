@@ -11,13 +11,16 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class BankEmployeeController {
-
     @FXML
     private Label idValue;
     @FXML
     private TextField nameTextField;
     @FXML
     private TextField salaryTextField;
+    @FXML
+    private TextField experienceTextField;
+    @FXML
+    private TextField departmentTextField;
     @FXML
     private RadioButton maleRadioButton;
     @FXML
@@ -36,14 +39,8 @@ public class BankEmployeeController {
         maleRadioButton.setToggleGroup(group);
         femaleRadioButton.setToggleGroup(group);
 
-        TextFormatter<String> numericFormatter = new TextFormatter<>(change -> {
-            String newText = change.getControlNewText();
-            if (newText.matches("\\d*")) {
-                return change;
-            }
-            return null;
-        });
-        salaryTextField.setTextFormatter(numericFormatter);
+        salaryTextField.setTextFormatter(getNumericFormatter());
+        experienceTextField.setTextFormatter(getNumericFormatter());
 
         fillTable();
         selectedItemListener();
@@ -51,14 +48,17 @@ public class BankEmployeeController {
 
     @FXML
     private void saveButtonAction() {
-        if (nameTextField.getText().isEmpty() || salaryTextField.getText().isEmpty()) {
+        if (nameTextField.getText().isEmpty() || salaryTextField.getText().isEmpty() || experienceTextField.getText().isEmpty() || departmentTextField.getText().isEmpty()) {
             showAlert("Ошибка", "Заполните все поля!");
         } else {
             String name = nameTextField.getText();
             int salary = Integer.parseInt(salaryTextField.getText());
             String gender = maleRadioButton.isSelected() ? "Мужской" : "Женский";
+            String department = departmentTextField.getText();
+            int experience = Integer.parseInt(experienceTextField.getText());
 
-            BankEmployee employee = new BankEmployee(name, salary, gender);
+            BankEmployee employee = new BankEmployee(name, salary, gender, experience, department);
+            employee.save();
             employees.add(employee);
             clearFields();
 
@@ -70,7 +70,7 @@ public class BankEmployeeController {
     private void updateButtonAction() {
         BankEmployee selectedEmployee = tableView.getSelectionModel().getSelectedItem();
         if (selectedEmployee != null) {
-            if (nameTextField.getText().isEmpty() || salaryTextField.getText().isEmpty()) {
+            if (nameTextField.getText().isEmpty() || salaryTextField.getText().isEmpty() || experienceTextField.getText().isEmpty() || departmentTextField.getText().isEmpty()) {
                 showAlert("Ошибка", "Заполните все поля!");
                 return;
             }
@@ -82,6 +82,11 @@ public class BankEmployeeController {
             } else {
                 selectedEmployee.setGender("Женский");
             }
+
+            selectedEmployee.setDepartment(departmentTextField.getText());
+            selectedEmployee.setExperience(Integer.parseInt(experienceTextField.getText()));
+
+            selectedEmployee.update();
 
             clearFields();
             showAlert("Успех", "Работник успешно отредактирован!");
@@ -96,6 +101,7 @@ public class BankEmployeeController {
         BankEmployee selectedEmployee = tableView.getSelectionModel().getSelectedItem();
         if (selectedEmployee != null) {
             employees.remove(selectedEmployee);
+            selectedEmployee.delete();
 
             clearFields();
             showAlert("Успех", "Работник успешно удалён!");
@@ -112,7 +118,7 @@ public class BankEmployeeController {
     @FXML
     private void saveToFileButtonAction() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:/Учёба/Рис/untitled/untitled6/src/main/java/com/babich/laba6/file.txt", true))) {
-            for(BankEmployee employee : employees) {
+            for (BankEmployee employee : employees) {
                 writer.write(employee + "\n");
             }
             writer.write("\n---------------------------------------------------------------\n");
@@ -128,6 +134,8 @@ public class BankEmployeeController {
         tableView.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("name"));
         tableView.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("salary"));
         tableView.getColumns().get(3).setCellValueFactory(new PropertyValueFactory<>("gender"));
+        tableView.getColumns().get(4).setCellValueFactory(new PropertyValueFactory<>("experience"));
+        tableView.getColumns().get(5).setCellValueFactory(new PropertyValueFactory<>("department"));
         tableView.setItems(employees);
     }
 
@@ -140,10 +148,15 @@ public class BankEmployeeController {
                 String name = selectedObject.getName();
                 int salary = selectedObject.getSalary();
                 String gender = selectedObject.getGender();
+                int experience = selectedObject.getExperience();
+                String department = selectedObject.getDepartment();
 
                 idValue.setText(String.valueOf(id));
                 nameTextField.setText(name);
                 salaryTextField.setText(String.valueOf(salary));
+                departmentTextField.setText(department);
+                experienceTextField.setText(String.valueOf(experience));
+
 
                 if (gender.equals("Мужской")) {
                     maleRadioButton.setSelected(true);
@@ -167,7 +180,19 @@ public class BankEmployeeController {
         nameTextField.setText("");
         salaryTextField.setText("");
         maleRadioButton.setSelected(true);
+        experienceTextField.setText("");
+        departmentTextField.setText("");
         tableView.getSelectionModel().clearSelection();
         tableView.refresh();
+    }
+
+    private TextFormatter<String> getNumericFormatter() {
+        return new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d*")) {
+                return change;
+            }
+            return null;
+        });
     }
 }
